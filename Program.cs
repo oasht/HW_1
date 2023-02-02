@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using static System.Console;
 namespace Test
 {
@@ -17,41 +18,53 @@ namespace Test
             char n;
             double res;
             WriteLine("Enter the action");
-            n = Convert.ToChar(ReadLine());
-
-            switch (n)
+           
+            string q;
+            do
             {
-                case ('+'):
-                    {
-                        res = a + b;
-                        WriteLine(res);
-                        break;
-                    }
-                case ('-'):
-                    {
-                        res = a - b;
-                        WriteLine(res);
-                        break;
-                    }
-                case ('*'):
-                    {
-                        res = a * b;
-                        WriteLine(res);
-                        break;
-                    }
+                Title = "Calculator";
+                n = Convert.ToChar(ReadLine());
+                Clear();
+                switch (n)
+                {
+                   
+                    case ('+'):
+                        {
+                            res = a + b;
+                            WriteLine(a + "+" + b + " = "+res) ;
+                            break;
+                        }
+                    case ('-'):
+                        {
+                            res = a - b;
+                            WriteLine(a + "-" + b + " = " + res);
+                            break;
+                        }
+                    case ('*'):
+                        {
+                            res = a * b;
+                            WriteLine(a + "*" + b + " = " + res);
+                            break;
+                        }
 
-                case ('/'):
-                    {
-                        res = a / b;
-                        WriteLine(res);
+                    case ('/'):
+                        {
+                            res = a / b;
+                            WriteLine(a + "/" + b + " = " + res);
+                            break;
+                        }
+
+                    default:
+                        WriteLine("Error!");
                         break;
-                    }
 
-                default:
-                    WriteLine("Error!");
-                    break;
-
-            }
+                }
+                Thread.Sleep(3000);
+                Clear();
+                WriteLine("Press 1 to continue");
+                q=ReadLine();
+                Clear();
+            } while (q=="1");
 
         }
     }
